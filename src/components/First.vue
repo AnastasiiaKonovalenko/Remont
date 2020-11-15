@@ -1,159 +1,204 @@
 <template>
     <div>
-        <div class="header">
-            <div class="header-info">
-                <h2 class="header-heading">
-                    Свяжитесь с нами
-                    <img src="../assets/phone-icon.svg">
-                </h2>
-
-                <p class="header-contacts">
-                    <a class="header-link" href="tel:+38(066)7457944">+38 (066) 745 79 44</a>
-                    <a class="header-link" href="tel:+38(050)3832774">+38 (050) 383 27 74</a>
-                    <a class="header-link" href="tel:+38(067)5032474">+38 (067) 503 24 74</a>
-                </p>
+        <div class="form-container" v-if="isFormActive">
+            <div class="white-scrim"></div>
+            <div style="position: relative">
+                <form class="form" @submit.prevent="submitForm">
+                    <h2 class="form-heading">
+                        ЗАПОЛНИТЕ ФОРМУ
+                        <br> ЧТОБЫ ПОЛУЧИТЬ СТОИМОСТЬ РЕМОНТА
+                        <br> НАШИ СОТРУДНИКИ СВЯЖУТЬСЯ С ВАМИ
+                    </h2>
+                    <div class="form-inputs">
+                        <label for="name" class="form-label">
+                            <span class="form-text">Ваше имя:</span>
+                            <span class="form-div">
+                                <input
+                                    class="form-input"
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    v-model="name"
+                                >
+                            </span>
+                            <span v-show="errorName" class="error-message">Заполните поле</span>
+                        </label>
+                        <label for="tel" class="form-label">
+                            <span class="form-text">Ваш номер тел.:</span>
+                            <span class="form-div">
+                                <input
+                                    class="form-input"
+                                    type="text" id="tel"
+                                    name="tel"
+                                    v-model="phoneNum"
+                                >
+                            </span>
+                            <span v-show="errorPhoneNum" class="error-message">Заполните поле</span>
+                        </label>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="form-cancel form-btn" @click.prevent="formOff">Отменить</button>
+                        <button class="form-ok form-btn" @click.prevent="submitForm">Ok</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="calculator">
-            <div class="scrim"></div>
-            <div class="calculator-info">
-                <h1 class="calculator-heading">
-                    РАЗРАБОТАЕМ ДИЗАЙН-ПРОЕКТ
-                    <br>
-                    СДЕЛАЕМ КАЧЕСТВЕННЫЙ РЕМОНТ ПОД КЛЮЧ
-                    <br>
-                    ПОСТРОИМ ДОМ
-                    <br>
-                    ФИКСИРОВАННАЯ ЦЕНА И СРОКИ
-                </h1>
+        <div v-show="!isFormActive">
+            <div class="header">
+                <div class="header-info">
+                    <h2 class="header-heading">
+                        Свяжитесь с нами
+                        <img src="../assets/phone-icon.svg">
+                    </h2>
 
-                <p class="calculator-text">
-                    Более 10 лет специализируемся на комплексном ремонте и строительстве в Киеве и области
-                </p>
+                    <p class="header-contacts">
+                        <a class="header-link" href="tel:+38(066)7457944">+38 (066) 745 79 44</a>
+                        <a class="header-link" href="tel:+38(050)3832774">+38 (050) 383 27 74</a>
+                        <a class="header-link" href="tel:+38(067)5032474">+38 (067) 503 24 74</a>
+                    </p>
+                </div>
+            </div>
+            <div class="calculator">
+                <div class="scrim"></div>
+                <div class="calculator-info">
+                    <h1 class="calculator-heading">
+                        РАЗРАБОТАЕМ ДИЗАЙН-ПРОЕКТ
+                        <br>
+                        СДЕЛАЕМ КАЧЕСТВЕННЫЙ РЕМОНТ ПОД КЛЮЧ
+                        <br>
+                        ПОСТРОИМ ДОМ
+                        <br>
+                        ФИКСИРОВАННАЯ ЦЕНА И СРОКИ
+                    </h1>
 
-                <button class="calculator-btn">
-                    <span>КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА</span>
-                </button>
+                    <p class="calculator-text">
+                        Более 10 лет специализируемся на комплексном ремонте и строительстве в Киеве и области
+                    </p>
+
+                    <button class="calculator-btn" @click="formToggler">
+                        <span>КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="examples">
-            <div class="examples-scrim"></div>
-            <div class="examples-photo">
-                <img src="../assets/images/examples.jpg" alt="examples">
+            <div class="examples">
+                <div class="white-scrim"></div>
+                <div class="examples-photo">
+                    <img src="../assets/images/examples.jpg" alt="examples">
+                </div>
             </div>
-        </div>
-        <div class="info">
-            <div class="scrim"></div>
-            <div class="info-container">
-                <h3 class="info-heading">Этапы проектирования и ремонта</h3>
-                <ul class="info-list list">
-                    <li class="list-item">1. Выезды специалиста на объект или подбор материалов</li>
-                    <li class="list-item">2. Консультация специалиста по выбору стилистического решения</li>
-                    <li class="list-item">3. Обмерочный чертеж с привязкой инженерных коммуникаций</li>
-                    <li class="list-item">4. Планировочные решеия (1-2 варианта)</li>
-                    <li class="list-item">5. План расстановки мебели (2-3 варианта)</li>
-                    <li class="list-item">6. План демонтаж перегородок</li>
-                    <li class="list-item">7. План монтаж перегородок</li>
-                    <li class="list-item">8. План помещения после перепланировки с размерами</li>
-                    <li class="list-item">9. План расстановки мебели с размерами</li>
-                    <li class="list-item">10. План пола с указанием типа используемого материала</li>
-                    <li class="list-item">11. План размещения осветительных приборов и их спецификация</li>
-                    <li class="list-item">12. План размещения выключателей и их спецификация</li>
-                    <li class="list-item">13. План размещения размещения розеток и их спецификация</li>
-                    <li class="list-item">14. План размещения сан-тех приборов и их спецификация</li>
-                    <li class="list-item">15. План размещения приборов отопления и кондиционирования и их спецификация</li>
-                    <li class="list-item">16. План размещения кухонной мебели и оборудования</li>
-                    <li class="list-item">17. Развертка стен по всем помещениям</li>
-                    <li class="list-item">18. Чертежи декоративных элементов и перегородок</li>
-                    <li class="list-item">19. По  необходимости 3D визуализации помещений</li>
-                    <li class="list-item">20. Авторский надзор объекта на протяжении всего ремонта</li>
-                    <li class="list-item">21. Ремонт под ключ</li>
-                    <li class="list-item">22. Подбор мебели и оборудования</li>
-                    <li class="list-item">23. Вывоз строй мусора</li>
-                    <li class="list-item">24. Уборка помещения после ремонта</li>
-                </ul>
-                <div class="benefits">
-                    <h3 class="benefits-heading">5 ПРОБЛЕМ ОТ КОТОРЫХ<br> МЫ ВАС ИЗБАВИМ</h3>
-                    <ul class="benefits-list">
-                        <li class="benefits-item">
-                            <Money />
-                            <span class="benefits-text">Всегда придерживаемся<br> согласованного бюджета</span>
-                        </li>
-                        <li class="benefits-item">
-                            <Hand />
-                            <span class="benefits-text">Только высокое качество работы</span>
-                        </li>
-                        <li class="benefits-item">
-                            <Time />
-                            <span class="benefits-text">Скорость. Успеем сделать на вчера</span>
-                        </li>
-                        <li class="benefits-item">
-                            <Car />
-                            <span class="benefits-text">
+            <div class="info">
+                <div class="scrim"></div>
+                <div class="info-container">
+                    <h3 class="info-heading">Этапы проектирования и ремонта</h3>
+                    <ul class="info-list list">
+                        <li class="list-item">1. Выезды специалиста на объект или подбор материалов</li>
+                        <li class="list-item">2. Консультация специалиста по выбору стилистического решения</li>
+                        <li class="list-item">3. Обмерочный чертеж с привязкой инженерных коммуникаций</li>
+                        <li class="list-item">4. Планировочные решеия (1-2 варианта)</li>
+                        <li class="list-item">5. План расстановки мебели (2-3 варианта)</li>
+                        <li class="list-item">6. План демонтаж перегородок</li>
+                        <li class="list-item">7. План монтаж перегородок</li>
+                        <li class="list-item">8. План помещения после перепланировки с размерами</li>
+                        <li class="list-item">9. План расстановки мебели с размерами</li>
+                        <li class="list-item">10. План пола с указанием типа используемого материала</li>
+                        <li class="list-item">11. План размещения осветительных приборов и их спецификация</li>
+                        <li class="list-item">12. План размещения выключателей и их спецификация</li>
+                        <li class="list-item">13. План размещения размещения розеток и их спецификация</li>
+                        <li class="list-item">14. План размещения сан-тех приборов и их спецификация</li>
+                        <li class="list-item">15. План размещения приборов отопления и кондиционирования и их спецификация</li>
+                        <li class="list-item">16. План размещения кухонной мебели и оборудования</li>
+                        <li class="list-item">17. Развертка стен по всем помещениям</li>
+                        <li class="list-item">18. Чертежи декоративных элементов и перегородок</li>
+                        <li class="list-item">19. По  необходимости 3D визуализации помещений</li>
+                        <li class="list-item">20. Авторский надзор объекта на протяжении всего ремонта</li>
+                        <li class="list-item">21. Ремонт под ключ</li>
+                        <li class="list-item">22. Подбор мебели и оборудования</li>
+                        <li class="list-item">23. Вывоз строй мусора</li>
+                        <li class="list-item">24. Уборка помещения после ремонта</li>
+                    </ul>
+                    <div class="benefits">
+                        <h3 class="benefits-heading">5 ПРОБЛЕМ ОТ КОТОРЫХ<br> МЫ ВАС ИЗБАВИМ</h3>
+                        <ul class="benefits-list">
+                            <li class="benefits-item">
+                                <Money />
+                                <span class="benefits-text">Всегда придерживаемся<br> согласованного бюджета</span>
+                            </li>
+                            <li class="benefits-item">
+                                <Hand />
+                                <span class="benefits-text">Только высокое качество работы</span>
+                            </li>
+                            <li class="benefits-item">
+                                <Time />
+                                <span class="benefits-text">Скорость. Успеем сделать на вчера</span>
+                            </li>
+                            <li class="benefits-item">
+                                <Car />
+                                <span class="benefits-text">
                                 Закупка и доставка материала а также вывоз<br> строй мусора на протяжении всего ремонта
                             </span>
-                        </li>
-                        <li class="benefits-item">
-                            <Wallet />
-                            <span class="benefits-text">Адекватная цена</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="choice">
-                    <div style="position: relative">
-                        <VectorSix />
-                        <p class="choice-center">ВЫБЕРИТЕ <br>ЭТАПЫ</p>
-                        <p class="choice-first step">
-                            1. Знакомство, выбор
-                            дизайн интерера,
-                            который
-                            вам нравится
-                        </p>
-                        <p class="choice-second step">
-                            2. Утверждение
-                            технического
-                            задания
-                        </p>
-                        <p class="choice-third step">
-                            3. Разработка
-                            нескольких
-                            эскизных
-                            вариантов
-                            интерьера
-                        </p>
-                        <p class="choice-four step">
-                            4. Создание
-                            дизайн
-                            проекта
-                            интерьера
-                        </p>
-                        <p class="choice-fifth step">
-                            5. Согласование
-                            и внесение<br>
-                            правок
-                        </p>
-                        <p class="choice-sixth step">
-                            6. Авторский
-                            надзор
-                        </p>
+                            </li>
+                            <li class="benefits-item">
+                                <Wallet />
+                                <span class="benefits-text">Адекватная цена</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="choice">
+                        <div style="position: relative">
+                            <VectorSix />
+                            <p class="choice-center">ВЫБЕРИТЕ <br>ЭТАПЫ</p>
+                            <p class="choice-first step">
+                                1. Знакомство, выбор
+                                дизайн интерера,
+                                который
+                                вам нравится
+                            </p>
+                            <p class="choice-second step">
+                                2. Утверждение
+                                технического
+                                задания
+                            </p>
+                            <p class="choice-third step">
+                                3. Разработка
+                                нескольких
+                                эскизных
+                                вариантов
+                                интерьера
+                            </p>
+                            <p class="choice-four step">
+                                4. Создание
+                                дизайн
+                                проекта
+                                интерьера
+                            </p>
+                            <p class="choice-fifth step">
+                                5. Согласование
+                                и внесение<br>
+                                правок
+                            </p>
+                            <p class="choice-sixth step">
+                                6. Авторский
+                                надзор
+                            </p>
+                        </div>
+                    </div>
+                    <div class="slogan">
+                        <span>РАЗРАБОТАЕМ / ДИЗАЙН-ПРОЕКТ / РЕМОНТ ПОД КЛЮЧ / СТРОИТЕЛЬСТВО</span>
                     </div>
                 </div>
-                <div class="slogan">
-                    <span>РАЗРАБОТАЕМ / ДИЗАЙН-ПРОЕКТ / РЕМОНТ ПОД КЛЮЧ / СТРОИТЕЛЬСТВО</span>
+            </div>
+            <div class="footer">
+                <div class="footer-contacts">
+                    <p>КОНТАКТЫ:</p>
+                    <a class="footer-tel" href="tel:+38(066)7457944">+38 (066) 745 79 44</a>
+                    <a class="footer-tel" href="tel:+38(050)3832774">+38 (050) 383 27 74</a>
+                    <a class="footer-tel" href="tel:+38(067)5032474">+38 (067) 503 24 74</a>
+                    <a class="footer-email" href = "mailto: kievprofstroi@gmail.com">Е-mail: kievprofstroi@gmail.com</a>
                 </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="footer-contacts">
-                <p>КОНТАКТЫ:</p>
-                <a class="footer-tel" href="tel:+38(066)7457944">+38 (066) 745 79 44</a>
-                <a class="footer-tel" href="tel:+38(050)3832774">+38 (050) 383 27 74</a>
-                <a class="footer-tel" href="tel:+38(067)5032474">+38 (067) 503 24 74</a>
-                <a class="footer-email" href = "mailto: kievprofstroi@gmail.com">Е-mail: kievprofstroi@gmail.com</a>
-            </div>
-            <div class="footer-schedule">
-                <p>График работы:</p>
-                <p>Пн.-Вс. с 09:00 по 21:00</p>
+                <div class="footer-schedule">
+                    <p>График работы:</p>
+                    <p>Пн.-Вс. с 09:00 по 21:00</p>
+                </div>
             </div>
         </div>
     </div>
@@ -176,18 +221,78 @@ export default {
         Time,
         Wallet,
         VectorSix
+    },
+    data() {
+        return {
+            isFormActive: false,
+            phoneNum: '',
+            name: '',
+            errorName: false,
+            errorPhoneNum: false
+        }
+    },
+    methods: {
+        formToggler(){
+            this.isFormActive = true;
+        },
+
+        formOff() {
+            this.isFormActive = false;
+            this.name = '';
+            this.phoneNum = ''
+        },
+
+        submitForm() {
+            if(!this.phoneNum) {
+                this.errorPhoneNum = true;
+            }
+
+            if(!this.name) {
+                this.errorName = true;
+            }
+
+            if(!this.phoneNum || !this.name) {
+                return;
+            }
+
+            this.isFormActive = false;
+            this.name = '';
+            this.phoneNum = ''
+        }
+    },
+    watch: {
+        phoneNum() {
+            if(this.phoneNum) {
+                this.errorPhoneNum = false;
+            }
+        },
+
+        name() {
+            if(this.name) {
+                this.errorName = false;
+            }
+        }
     }
 }
 </script>
 
 <style scoped lang="scss">
-.scrim {
+   .error-message {
+       font-family: 'Catamaran-Medium', sans-serif;
+       color: red;
+       position: absolute;
+       bottom: -20px;
+       right: 0;
+   }
+
+   .scrim {
     position: absolute;
     height: 100%;
     width: 100%;
     background-color: #0f0f37;
     opacity: 0.7;
 }
+
    .header {
        &-info {
            height: 240px;
@@ -285,19 +390,19 @@ export default {
        }
    }
 
+   .white-scrim {
+       position: absolute;
+       height: 100%;
+       width: 100%;
+       background-color: #fff;
+       opacity: 0.7;
+   }
+
    .examples {
        height: 1024px;
        background: url("../assets/images/back-ground1.jpg");
        background-size: cover;
        position: relative;
-
-       &-scrim {
-           position: absolute;
-           height: 100%;
-           width: 100%;
-           background-color: #fff;
-           opacity: 0.7;
-       }
 
        &-photo {
            position: absolute;
@@ -509,7 +614,97 @@ export default {
        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
    }
 
+  .form-container {
+      height: 100vh;
+      width: 100vw;
+      background: url("../assets/images/back-ground1.jpg");
+      background-size: cover;
+      z-index: 5;
+  }
 
+  .form {
+      padding-top: 8%;
+
+      &-heading {
+          font-family: 'Catamaran-Regular', sans-serif;
+          font-weight: 700;
+          font-size: 36px;
+          text-align: center;
+          margin-bottom: 5%;
+      }
+
+
+      &-text {
+          font-family: 'Catamaran-Regular', sans-serif;
+          font-weight: 700;
+          font-size: 36px;
+          display: flex;
+          align-items: flex-end;
+          line-height: 1;
+      }
+
+      &-inputs {
+          display: flex;
+          justify-content: center;
+      }
+
+      &-input {
+          background-color: transparent!important;
+          border: none;
+          outline: none;
+          height: 100%;
+          width: 100%;
+          font-family: 'Catamaran-Regular', sans-serif;
+          font-weight: 700;
+          font-size: 36px;
+          line-height: 1;
+      }
+
+      &-div {
+          width: 230px;
+          height: 85%;
+          border-bottom: 3px dashed black;
+          margin-left: 10px;
+      }
+
+      &-label {
+          display: flex;
+          position: relative;
+          &:first-child {
+              margin-right: 104px;
+          }
+      }
+
+      &-buttons {
+          display: flex;
+          justify-content: flex-end;
+      }
+
+      &-btn {
+          background: #7096F5;
+          box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.18);
+          border-radius: 17px;
+          outline: none;
+          min-width: 106px;
+          height: 86px;
+          margin-top: 128px;
+          font-family: 'Catamaran-Regular', sans-serif;
+          font-weight: 600;
+          font-size: 36px;
+          padding: 0 10px;
+          text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+          line-height: 1;
+          color: #FFFFFF;
+      }
+
+      &-cancel {
+          margin-right: 40px;
+      }
+
+      &-ok {
+          margin-right: 188px;
+      }
+  }
 
 @media screen and (max-width: 1364px) {
        .header {
@@ -590,6 +785,60 @@ export default {
            padding-bottom: 50px;
        }
    }
+
+@media screen and (max-width: 1138px){
+    .form {
+        padding-top: 8%;
+
+        &-heading {
+            font-size: 26px;
+        }
+
+
+        &-text {
+            font-size: 26px;
+        }
+
+        &-input {
+            font-size: 26px;
+        }
+
+        &-label {
+            display: flex;
+            &:first-child {
+                margin-right: 104px;
+            }
+        }
+
+
+        &-btn {
+            font-size: 26px;
+        }
+
+        &-ok {
+            margin-right: 100px;
+        }
+    }
+}
+
+@media screen and (max-width: 982px) {
+    .form {
+        &-inputs {
+            margin: 40px;
+            flex-direction: column;
+        }
+
+        &-div {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        &-label:first-child {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+}
 
 @media screen and (max-width: 620px) {
     .header {
@@ -762,6 +1011,36 @@ export default {
         &-schedule {
             margin: 20px;
         }
+    }
+
+    .form {
+        &-heading {
+            font-size: 18px;
+        }
+
+        &-text {
+            font-size: 18px;
+        }
+
+        &-input {
+            font-size: 18px;
+        }
+
+        &-btn {
+            min-width: 75px;
+            height: 65px;
+            margin-top: 128px;
+            font-size: 18px;
+        }
+
+        &-cancel {
+            margin-right: 30px;
+        }
+
+        &-ok {
+            margin-right: 30px;
+        }
+
     }
 }
 
