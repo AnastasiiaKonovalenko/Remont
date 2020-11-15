@@ -240,6 +240,8 @@ export default {
             this.isFormActive = false;
             this.name = '';
             this.phoneNum = ''
+            this.errorPhoneNum = false;
+            this.errorName = false;
         },
 
         submitForm() {
