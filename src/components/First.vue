@@ -24,7 +24,7 @@
                             <span v-show="errorName" class="error-message">Заполните поле</span>
                         </label>
                         <label for="tel" class="form-label">
-                            <span class="form-text">Ваш номер тел.:</span>
+                            <span class="form-text">Номер тел.:</span>
                             <span class="form-div">
                                 <input
                                     class="form-input"
@@ -48,7 +48,6 @@
                 <div class="header-info">
                     <h2 class="header-heading">
                         Свяжитесь с нами
-                        <img src="../assets/phone-icon.svg">
                     </h2>
 
                     <p class="header-contacts">
@@ -146,10 +145,10 @@
                     <div class="choice">
                         <div style="position: relative">
                             <VectorSix />
-                            <p class="choice-center">ВЫБЕРИТЕ <br>ЭТАПЫ</p>
+                            <p class="choice-center">ЭТАПЫ<br> РАБОТЫ</p>
                             <p class="choice-first step">
                                 1. Знакомство, выбор
-                                дизайн интерера,
+                                дизайн интерьера,
                                 который
                                 вам нравится
                             </p>
@@ -317,6 +316,7 @@ export default {
            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
            padding-top: 60px;
            margin-bottom: 50px;
+           height: 50px;
        }
 
        &-contacts {
@@ -556,8 +556,8 @@ export default {
 
        &-center {
            position: absolute;
-           top: 210px;
-           left: 195px;
+           top: 205px;
+           left: 212px;
            font-family: 'Catamaran-Regular', sans-serif;
            font-weight: bold;
            font-size: 26px;
@@ -638,6 +638,7 @@ export default {
 
       &-text {
           font-family: 'Catamaran-Regular', sans-serif;
+          min-width: 100px;
           font-weight: 700;
           font-size: 36px;
           display: flex;
@@ -984,7 +985,7 @@ export default {
     }
     .choice {
         & div {
-            transform: scale(0.5);
+            transform: scale(0.65);
         }
     }
 
