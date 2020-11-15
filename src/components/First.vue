@@ -82,7 +82,7 @@
             <div class="examples">
                 <div class="white-scrim"></div>
                 <div class="examples-photo">
-                    <img src="../assets/images/examples.jpg" alt="examples">
+                    <Examples />
                 </div>
             </div>
             <div class="info">
@@ -210,6 +210,7 @@ import Money from "@/icons/Money";
 import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
 import VectorSix from "@/icons/VectorSix";
+import Examples from "@/components/Examples";
 
 export default {
     name: "First",
@@ -219,7 +220,8 @@ export default {
         Money,
         Time,
         Wallet,
-        VectorSix
+        VectorSix,
+        Examples
     },
     data() {
         return {
@@ -401,15 +403,12 @@ export default {
    }
 
    .examples {
-       height: 1024px;
        background: url("../assets/images/back-ground1.jpg");
        background-size: cover;
        position: relative;
 
        &-photo {
-           position: absolute;
-           height: 100%;
-           width: 100%;
+           position: relative;
            display: flex;
            justify-content: center;
            align-items: center;
@@ -750,9 +749,6 @@ export default {
                }
            }
        }
-       .examples {
-           height: 840px;
-       }
        .list {
            margin-left: 68px;
            &-item {
@@ -941,10 +937,6 @@ export default {
                 text-align: center;
             }
         }
-    }
-
-    .examples {
-        height: 300px;
     }
 
     .list {
