@@ -75,29 +75,68 @@
                 <div class="benefits">
                     <h3 class="benefits-heading">5 ПРОБЛЕМ ОТ КОТОРЫХ<br> МЫ ВАС ИЗБАВИМ</h3>
                     <ul class="benefits-list">
-                        <ul class="benefits-item">
+                        <li class="benefits-item">
                             <Money />
                             <span class="benefits-text">Всегда придерживаемся<br> согласованного бюджета</span>
-                        </ul>
-                        <ul class="benefits-item">
+                        </li>
+                        <li class="benefits-item">
                             <Hand />
                             <span class="benefits-text">Только высокое качество работы</span>
-                        </ul>
-                        <ul class="benefits-item">
+                        </li>
+                        <li class="benefits-item">
                             <Time />
                             <span class="benefits-text">Скорость. Успеем сделать на вчера</span>
-                        </ul>
-                        <ul class="benefits-item">
+                        </li>
+                        <li class="benefits-item">
                             <Car />
                             <span class="benefits-text">
                                 Закупка и доставка материала а также вывоз<br> строй мусора на протяжении всего ремонта
                             </span>
-                        </ul>
-                        <ul class="benefits-item">
+                        </li>
+                        <li class="benefits-item">
                             <Wallet />
                             <span class="benefits-text">Адекватная цена</span>
-                        </ul>
+                        </li>
                     </ul>
+                </div>
+                <div class="choice">
+                    <div style="position: relative">
+                        <VectorSix />
+                        <p class="choice-center">ВЫБЕРИТЕ <br>ЭТАПЫ</p>
+                        <p class="choice-first step">
+                            1. Знакомство, выбор
+                            дизайн интерера,
+                            который
+                            вам нравится
+                        </p>
+                        <p class="choice-second step">
+                            2. Утверждение
+                            технического
+                            задания
+                        </p>
+                        <p class="choice-third step">
+                            3. Разработка
+                            нескольких
+                            эскизных
+                            вариантов
+                            интерьера
+                        </p>
+                        <p class="choice-four step">
+                            4. Создание
+                            дизайн
+                            проекта
+                            интерьера
+                        </p>
+                        <p class="choice-fifth step">
+                            5. Согласование
+                            и внесение<br>
+                            правок
+                        </p>
+                        <p class="choice-sixth step">
+                            6. Авторский
+                            надзор
+                        </p>
+                    </div>
                 </div>
                 <div class="slogan">
                     <span>РАЗРАБОТАЕМ / ДИЗАЙН-ПРОЕКТ / РЕМОНТ ПОД КЛЮЧ / СТРОИТЕЛЬСТВО</span>
@@ -126,6 +165,7 @@ import Hand from "@/icons/Hand";
 import Money from "@/icons/Money";
 import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
+import VectorSix from "@/icons/VectorSix";
 
 export default {
     name: "First",
@@ -134,7 +174,8 @@ export default {
         Hand,
         Money,
         Time,
-        Wallet
+        Wallet,
+        VectorSix
     }
 }
 </script>
@@ -395,5 +436,77 @@ export default {
        &-schedule {
            margin-right: 70px;
        }
+   }
+
+   .choice {
+       position: absolute;
+       top: 720px;
+       right: 80px;
+
+       &-center {
+           position: absolute;
+           top: calc(50% - 35px);
+           left: calc(50% - 75px);
+           font-family: 'Catamaran-Regular', sans-serif;
+           font-weight: bold;
+           font-size: 26px;
+           color: #fff;
+           text-align: center;
+           text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+       }
+
+       &-first {
+           position: absolute;
+           top: 12px;
+           left: 210px;
+           width: 120px;
+           text-align: center;
+       }
+
+       &-second {
+           position: absolute;
+           top: 130px;
+           left: 320px;
+           width: 150px;
+           text-align: end;
+       }
+
+       &-third {
+           position: absolute;
+           top: 285px;
+           left: 320px;
+           width: 150px;
+           text-align: end;
+       }
+       &-four {
+           position: absolute;
+           top: 370px;
+           left: 210px;
+           width: 120px;
+           text-align: center;
+       }
+
+       &-fifth {
+           position: absolute;
+           top: 290px;
+           left: 60px;
+           width: 140px;
+       }
+
+       &-sixth {
+           position: absolute;
+           top: 130px;
+           left: 75px;
+           width: 140px;
+       }
+   }
+
+   .step {
+       font-family: 'Catamaran-Regular', sans-serif;
+       font-weight: bold;
+       font-size: 17px;
+       line-height: 21px;
+       color: #FFFFFF;
+       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
    }
 </style>
