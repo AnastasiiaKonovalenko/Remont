@@ -31,9 +31,9 @@
                     Более 10 лет специализируемся на комплексном ремонте и строительстве в Киеве и области
                 </p>
 
-                <div class="calculator-btn">
+                <button class="calculator-btn">
                     <span>КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА</span>
-                </div>
+                </button>
             </div>
         </div>
         <div class="examples">
@@ -196,6 +196,9 @@ export default {
        }
 
        &-heading {
+           display: flex;
+           align-items: center;
+           justify-content: center;
            color: #fff;
            text-transform: uppercase;
            font-family: 'Catamaran-Medium', sans-serif;
@@ -270,6 +273,7 @@ export default {
            justify-content: center;
            align-items: center;
            margin-top: 50px;
+           outline: none;
 
            & span {
                font-family: 'Catamaran-Bold', sans-serif;
@@ -445,8 +449,8 @@ export default {
 
        &-center {
            position: absolute;
-           top: calc(50% - 35px);
-           left: calc(50% - 75px);
+           top: 210px;
+           left: 195px;
            font-family: 'Catamaran-Regular', sans-serif;
            font-weight: bold;
            font-size: 26px;
@@ -456,7 +460,6 @@ export default {
        }
 
        &-first {
-           position: absolute;
            top: 12px;
            left: 210px;
            width: 120px;
@@ -464,7 +467,6 @@ export default {
        }
 
        &-second {
-           position: absolute;
            top: 130px;
            left: 320px;
            width: 150px;
@@ -472,14 +474,12 @@ export default {
        }
 
        &-third {
-           position: absolute;
            top: 285px;
            left: 320px;
            width: 150px;
            text-align: end;
        }
        &-four {
-           position: absolute;
            top: 370px;
            left: 210px;
            width: 120px;
@@ -487,14 +487,12 @@ export default {
        }
 
        &-fifth {
-           position: absolute;
            top: 290px;
            left: 60px;
            width: 140px;
        }
 
        &-sixth {
-           position: absolute;
            top: 130px;
            left: 75px;
            width: 140px;
@@ -502,6 +500,7 @@ export default {
    }
 
    .step {
+       position: absolute;
        font-family: 'Catamaran-Regular', sans-serif;
        font-weight: bold;
        font-size: 17px;
@@ -509,4 +508,266 @@ export default {
        color: #FFFFFF;
        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
    }
+
+
+
+@media screen and (max-width: 1364px) {
+       .header {
+           &-info {
+               height: 340px;
+           }
+
+           &-heading {
+               font-size: 48px;
+           }
+
+           &-contacts {
+               flex-direction: column;
+           }
+
+           &-link {
+               margin-bottom: 35px;
+               text-align: center;
+               font-size: 32px;
+           }
+       }
+       .calculator {
+           height: 785px;
+
+           &-heading {
+               font-size: 32px;
+           }
+
+           &-text {
+               font-size: 28px;
+               padding: 0 80px;
+           }
+
+           &-btn {
+               width: 390px;
+               height: 56px;
+
+               & span {
+                   font-size: 18px;
+               }
+           }
+       }
+       .examples {
+           height: 840px;
+       }
+       .list {
+           margin-left: 68px;
+           &-item {
+               font-size: 18px;
+           }
+       }
+       .benefits {
+           margin-left: 40px;
+
+           &-heading {
+               font-size: 24px;
+           }
+
+           &-item {
+               font-size: 18px;
+           }
+
+           &-text {
+               font-family: 'Mitr-Medium', sans-serif;
+               font-size: 26px;
+               margin-left: 25px;
+               display: flex;
+               align-items: center;
+               line-height: 1.15;
+           }
+       }
+       .choice {
+           position: relative;
+           top: 0;
+           left: 0;
+           display: flex;
+           justify-content: center;
+           padding-bottom: 50px;
+       }
+   }
+
+@media screen and (max-width: 620px) {
+    .header {
+
+        &-heading {
+            font-size: 32px;
+        }
+    }
+
+    .list {
+        margin-left: 30px;
+        margin-right: 30px;
+
+        &-item {
+            font-size: 18px;
+        }
+    }
+    .benefits {
+
+        &-heading {
+            font-size: 18px;
+        }
+
+        &-item {
+            font-size: 18px;
+        }
+
+        &-text {
+            font-size: 18px;
+        }
+    }
+    .slogan {
+
+        & span {
+            font-size: 18px;
+        }
+    }
+
+    .footer {
+        & p {
+            font-size: 18px;
+        }
+
+        &-tel, &-email, &-schedule {
+            font-size: 18px;
+        }
+
+        &-contacts {
+            margin-left: 40px;
+        }
+
+        &-schedule {
+            margin-right: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 553px) {
+    .header {
+        height: 220px;
+
+        &-heading {
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+
+            & img {
+                transform: scale(0.7);
+            }
+        }
+
+        &-link {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    }
+    .calculator {
+        height: 600px;
+
+        &-heading {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        &-text {
+            padding: 0 40px;
+            font-size: 18px;
+        }
+
+        &-btn {
+            width: 250px;
+            height: 56px;
+
+            & span {
+                font-size: 14px;
+                line-height: 1.25;
+                text-align: center;
+            }
+        }
+    }
+
+    .examples {
+        height: 300px;
+    }
+
+    .list {
+        &-item {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    }
+    .info {
+        &-heading {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+    .benefits {
+        margin-left: 20px;
+        margin-bottom: 40px;
+        &-heading {
+            font-size: 18px;
+            margin-left: 40px;
+        }
+
+        &-item {
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        &-text {
+            font-size: 18px;
+        }
+    }
+    .slogan {
+
+        & span {
+            font-size: 14px;
+            padding: 0 20px;
+        }
+    }
+    .choice {
+        & div {
+            transform: scale(0.5);
+        }
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+
+
+        &-contacts {
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+
+            & p {
+                margin-left: 0;
+            }
+        }
+
+        &-tel {
+            text-align: center;
+        }
+
+        &-schedule {
+            margin: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 349px) {
+    .calculator {
+        height: 750px;
+    }
+}
 </style>
