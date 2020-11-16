@@ -1,22 +1,16 @@
 <template>
-    <div style="position: relative">
+    <div style="position: relative; width: 100%; display: flex; justify-content: center">
         <div id="grid" class="grid">
-            <div v-for="i in 12" :key="i">
+            <div class="scrim" v-if="link"></div>
+            <div v-for="i in 12" :key="i" class="grid-item">
                 <img @click="setImgLink(i)" class="grid-img" :src="require(`../assets/images/${i}.jpg`)" alt="">
             </div>
         </div>
         <transition name="fade">
-            <div class="big-img" v-if="link">
-                <img style="object-fit: cover; height: 100%" :src="require(`../assets/images/${link}.jpg`)" alt="">
-                <button
-                    @click="clearImgLink"
-                    class="close-btn"
-                >
-                    Закрыть
-                </button>
-
-                <img @click="slideToLeft" :class="{disabled: +link === 1}" class="left arrow" src="../assets/images/pngwing.com.png" alt="">
-                <img @click="slideToRight" :class="{disabled: +link === 12}" class="right arrow" src="../assets/images/pngwing.com.png" alt="">
+            <div class="big-img" v-if="link" @click="clearImgLink">
+                <img class="image" :src="require(`../assets/images/${link}.jpg`)" :alt="`image-${link}`">
+                <img @click.stop="slideToLeft" :class="{disabled: +link === 1}" class="left arrow" src="../assets/images/pngwing.com.png" alt="">
+                <img @click.stop="slideToRight" :class="{disabled: +link === 12}" class="right arrow" src="../assets/images/pngwing.com.png" alt="">
             </div>
         </transition>
     </div>
@@ -53,6 +47,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.scrim {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.85;
+}
+
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
 }
@@ -74,7 +76,6 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
         height: 100%;
         opacity: .4;
         z-index: -1;
@@ -82,8 +83,16 @@ export default {
         background-size: cover;
     }
 }
-#grid > div {
+.grid-item {
     height: 264px;
+}
+
+.scrim {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.7;
 }
 
 .grid {
@@ -91,23 +100,20 @@ export default {
         height: 264px;
         width: 221px;
         object-fit: cover;
-        -webkit-box-shadow: 0 0 14px 5px rgba(0,0,0,0.51);
-        -moz-box-shadow: 0 0 14px 5px rgba(0,0,0,0.51);
-        box-shadow: 0 0 14px 5px rgba(0,0,0,0.51);
+        -webkit-box-shadow: 0 0 14px 5px rgba(0,0,0,0.61);
+        -moz-box-shadow: 0 0 14px 5px rgba(0,0,0,0.61);
+        box-shadow: 0 0 14px 5px rgba(0,0,0,0.61);
         transition:transform 0.25s ease;
     }
 }
 
 .big-img {
     top: 5%;
-    background-color: white;
-    -webkit-box-shadow: 0px 0px 29px 10px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0px 0px 29px 10px rgba(0,0,0,0.6);
-    box-shadow: 0px 0px 29px 10px rgba(0,0,0,0.6);
     z-index: 5;
     padding: 30px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     height: 90%;
     width: 100%;
@@ -153,8 +159,17 @@ export default {
     opacity: 0.2;
 }
 
+.image {
+    object-fit: contain;
+    max-width: 90%;
+    max-height: 90%;
+    -webkit-box-shadow: 0 0 29px 10px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 29px 10px rgba(0,0,0,0.6);
+    box-shadow: 0 0 29px 10px rgba(0,0,0,0.6);
+}
+
 @media screen and (max-width: 1110px){
-    #grid > div {
+    .grid-item {
         height: 23.78vw;
     }
     .grid {
