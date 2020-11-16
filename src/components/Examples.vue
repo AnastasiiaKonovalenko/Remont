@@ -148,11 +148,11 @@ export default {
 
 .left {
     transform: scaleX(-1);
-    left: 40px;
+    left: 10px;
 }
 
 .right {
-    right: 40px;
+    right: 10px;
 }
 
 .disabled {
