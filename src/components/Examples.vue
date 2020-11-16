@@ -133,6 +133,8 @@ export default {
 .arrow {
     height: 8vw;
     width: 8vw;
+    max-height: 60px;
+    max-width: 60px;
     opacity: 0.4;
     position: absolute;
     top: calc(50% - 4vw);
@@ -140,11 +142,11 @@ export default {
 
 .left {
     transform: scaleX(-1);
-    left: 20px;
+    left: 40px;
 }
 
 .right {
-    right: 20px;
+    right: 40px;
 }
 
 .disabled {
@@ -179,6 +181,16 @@ export default {
 
     .big-img {
         padding: 2.7vw;
+    }
+}
+
+@media screen and (max-width: 560px){
+    .left {
+        left: 20px;
+    }
+
+    .right {
+        right: 20px;
     }
 }
 </style>
