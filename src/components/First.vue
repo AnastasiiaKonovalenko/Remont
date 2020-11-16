@@ -1043,5 +1043,9 @@ export default {
     .calculator {
         height: 750px;
     }
+
+    .choice div {
+        transform: scale(0.55);
+    }
 }
 </style>
