@@ -3,7 +3,7 @@
         <div class="form-container" v-if="isFormActive">
             <div class="white-scrim"></div>
             <div style="position: relative">
-                <form class="form" @submit.prevent="submitForm">
+                <form method="post" class="form" @submit.prevent="submitForm">
                     <h2 class="form-heading">
                         ЗАПОЛНИТЕ ФОРМУ
                         <br> ЧТОБЫ ПОЛУЧИТЬ СТОИМОСТЬ РЕМОНТА
@@ -29,7 +29,7 @@
                                 <input
                                     class="form-input"
                                     type="text" id="tel"
-                                    name="tel"
+                                    name="phone"
                                     v-model="phoneNum"
                                 >
                             </span>
@@ -211,6 +211,7 @@ import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
 import VectorSix from "@/icons/VectorSix";
 import Examples from "@/components/Examples";
+import axios from 'axios'
 
 export default {
     name: "First",
@@ -257,6 +258,19 @@ export default {
             if(!this.phoneNum || !this.name) {
                 return;
             }
+
+            axios.post('/telegramform/php/send-message-to-telegram.php', {
+                'name': this.name,
+                'phone': this.phoneNum,
+                'data': `${new Date().getDate()}-${new Date()
+                    .getMonth()}-${new Date().getFullYear()} в ${new Date().getHours()}:${new Date().getMinutes()}`
+            }
+            ).then(function(data){
+                console.log(data.data);
+            })
+                .catch(function(){
+                    console.log('FAILURE!!');
+                });
 
             this.isFormActive = false;
             this.name = '';
