@@ -265,7 +265,7 @@ export default {
                 'data': `${new Date().getDate()}-${new Date()
                     .getMonth()}-${new Date().getFullYear()} в ${new Date().getHours()}:${new Date().getMinutes()}`
             }, {
-                headers: ("Access-Control-Allow-Origin: *")
+                    headers: { 'Access-Control-Allow-Origin': '*' },
                 }
             ).then(function(data){
                 console.log(data.data);
