@@ -270,8 +270,8 @@ export default {
             ).then(function(data){
                 console.log(data.data);
             })
-                .catch(function(){
-                    console.log('FAILURE!!');
+                .catch(function(err){
+                    console.log(err);
                 });
 
             this.isFormActive = false;
