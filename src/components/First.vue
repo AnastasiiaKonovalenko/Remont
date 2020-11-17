@@ -259,7 +259,7 @@ export default {
                 return;
             }
 
-            axios.post('src/telegramform/php/send-message-to-telegram.php', {
+            axios.post('/telegramform/php/send-message-to-telegram.php', {
                 'name': this.name,
                 'phone': this.phoneNum,
                 'data': `${new Date().getDate()}-${new Date()
