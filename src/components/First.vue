@@ -259,12 +259,14 @@ export default {
                 return;
             }
 
-            axios.post('/telegramform/php/send-message-to-telegram.php', {
+            axios.post('src/telegramform/php/send-message-to-telegram.php', {
                 'name': this.name,
                 'phone': this.phoneNum,
                 'data': `${new Date().getDate()}-${new Date()
                     .getMonth()}-${new Date().getFullYear()} в ${new Date().getHours()}:${new Date().getMinutes()}`
-            }
+            }, {
+                    headers: { 'content-type': 'application/form-data' },
+                }
             ).then(function(data){
                 console.log(data.data);
             })
