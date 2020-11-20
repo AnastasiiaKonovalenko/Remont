@@ -305,6 +305,7 @@ export default {
     },
     watch: {
         phoneNum() {
+            console.log(this.phoneNum)
             this.phoneNum = this.phoneNum.replace(/\D/g, '')
             if(this.phoneNum) {
                 this.errorPhoneNum = false;
