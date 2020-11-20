@@ -28,7 +28,8 @@
                             <span class="form-div">
                                 <input
                                     class="form-input"
-                                    type="text" id="tel"
+                                    type="tel"
+                                    id="tel"
                                     name="phone"
                                     v-model="phoneNum"
                                 >
@@ -304,6 +305,7 @@ export default {
     },
     watch: {
         phoneNum() {
+            this.phoneNum = this.phoneNum.replace(/\D/g, '')
             if(this.phoneNum) {
                 this.errorPhoneNum = false;
             }
