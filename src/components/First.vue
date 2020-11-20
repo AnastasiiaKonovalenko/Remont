@@ -36,6 +36,7 @@
                             <span v-show="errorPhoneNum" class="error-message">Заполните поле</span>
                         </label>
                     </div>
+                    <div class="notification" v-show="success">Наши сотрудники вскоре свяжутся с Вами</div>
                     <div class="form-buttons">
                         <button class="form-cancel form-btn" @click.prevent="formOff">Отменить</button>
                         <button class="form-ok form-btn" @click.prevent="submitForm">Ok</button>
@@ -211,7 +212,6 @@ import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
 import VectorSix from "@/icons/VectorSix";
 import Examples from "@/components/Examples";
-import axios from 'axios'
 
 export default {
     name: "First",
@@ -230,7 +230,12 @@ export default {
             phoneNum: '',
             name: '',
             errorName: false,
-            errorPhoneNum: false
+            errorPhoneNum: false,
+            authToken: '1418261456:AAHSVdgZLME5t_9YQh0KBdmHwJXCilM4lYY',
+            chatID: '-460826271',
+            parseMode: 'HTML',
+            disableNotif: false,
+            success: false,
         }
     },
     methods: {
@@ -259,25 +264,43 @@ export default {
                 return;
             }
 
-            axios.post('/telegramform/php/send-message-to-telegram.php', {
-                'name': this.name,
-                'phone': this.phoneNum,
-                'data': `${new Date().getDate()}-${new Date()
-                    .getMonth()}-${new Date().getFullYear()} в ${new Date().getHours()}:${new Date().getMinutes()}`
-            }, {
-                    headers: { 'Access-Control-Allow-Origin': '*' },
-                }
-            ).then(function(data){
-                console.log(data.data);
-            })
-                .catch(function(err){
-                    console.log(err);
-                });
+            let url = `https://api.telegram.org/bot${this.authToken}/sendMessage?chat_id=${this.chatID}&text=${this.msgText}&parse_mode=${this.parseMode}&disable_notification=${this.disableNotif}`
 
-            this.isFormActive = false;
-            this.name = '';
-            this.phoneNum = ''
+            fetch(url)
+                .then(response => {
+                    return response.json();
+                })
+                .then(response => {
+                    this.success = true;
+                    this.name = ''
+                    this.phoneNum = ''
+
+                    setTimeout(() => {
+                        this.isFormActive = false;
+                        this.name = '';
+                        this.phoneNum = '';
+                        this.success = false;
+                    }, 2500)
+                })
+                .catch(error => {
+                    console.log();
+                    throw new Error(error);
+                });
         }
+    },
+    computed: {
+        msgText() {
+            let options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long',
+                timezone: 'UTC',
+                hour: 'numeric',
+                minute: 'numeric',
+            };
+        return '<b>Новая заявка на сайте</b>' + '%0A<b>Имя:</b> ' + this.name + '%0A<b>Номер телефона:</b> ' + `<a :href="${this.phoneNum}">${this.phoneNum}</a>` + '%0A<b>Дата:</b> ' + new Date().toLocaleString("ru", options)
+        },
     },
     watch: {
         phoneNum() {
@@ -296,6 +319,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.notification {
+    font-family: 'Catamaran-Medium', sans-serif;
+    text-align: center;
+}
    .error-message {
        font-family: 'Catamaran-Medium', sans-serif;
        color: red;
