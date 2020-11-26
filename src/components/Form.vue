@@ -8,6 +8,7 @@
         >
             <template v-slot:activator="{ on, attrs }">
                 <div
+                    class="mt-8 mb-8"
                     v-bind="attrs"
                     v-on="on"
                 >
@@ -18,7 +19,6 @@
                         :btn-type="'calculator'"
                         :btn-heading="'КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА'"
                         :ripple-color="'info'"
-                        class="mt-8 mb-8"
                         :text-font-size="textFont(24, 18, 14)"
                     />
                 </div>

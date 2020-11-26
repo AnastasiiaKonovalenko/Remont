@@ -5,6 +5,7 @@
     >
         <template v-slot:activator="{ on, attrs }">
             <div
+                class="mt-8 mb-8"
                 v-bind="attrs"
                 v-on="on"
             >
@@ -15,7 +16,6 @@
                     :text-color="'#000'"
                     :btn-type="'sales'"
                     :ripple-color="'colorWhite'"
-                    class="mt-8 mb-8"
                     :text-font-size="textFont(48, 32, 24)"
                 />
             </div>
