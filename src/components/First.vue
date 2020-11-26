@@ -72,13 +72,19 @@
                         ФИКСИРОВАННАЯ ЦЕНА И СРОКИ
                     </h1>
 
+                    <GenericBtn
+                        :btn-heading="'BLACK FRIDAY'"
+                        :btn-type="'sales'"
+                    />
+
                     <p class="calculator-text">
                         Более 10 лет специализируемся на комплексном ремонте и строительстве в Киеве и области
                     </p>
 
-                    <button class="calculator-btn" @click="formToggler">
-                        <span>КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА</span>
-                    </button>
+                    <GenericBtn
+                        @form-toggler="formToggler"
+                        :btn-type="'calculator'"
+                        :btn-heading="'КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА'"/>
                 </div>
             </div>
             <div class="examples">
@@ -118,7 +124,7 @@
                         <li class="list-item">24. Уборка помещения после ремонта</li>
                     </ul>
                     <div class="benefits">
-                        <h3 class="benefits-heading">5 ПРОБЛЕМ ОТ КОТОРЫХ<br> МЫ ВАС ИЗБАВИМ</h3>
+                        <h3 class="benefits-heading">НАШИ ПРЕИМУЩЕСТВА</h3>
                         <ul class="benefits-list">
                             <li class="benefits-item">
                                 <Money />
@@ -213,7 +219,7 @@ import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
 import VectorSix from "@/icons/VectorSix";
 import Examples from "@/components/Examples";
-
+import GenericBtn from "@/components/GenericBtn";
 export default {
     name: "First",
     components: {
@@ -223,7 +229,8 @@ export default {
         Time,
         Wallet,
         VectorSix,
-        Examples
+        Examples,
+        GenericBtn
     },
     data() {
         return {
@@ -303,6 +310,9 @@ export default {
             };
         return '<b>Новая заявка на сайте</b>' + '%0A<b>Имя:</b> ' + this.name + '%0A<b>Номер телефона:</b> ' + `<a :href="${this.phoneNum}">${this.phoneNum}</a>` + '%0A<b>Дата:</b> ' + new Date().toLocaleString("ru", options)
         },
+    },
+    mounted() {
+
     },
     watch: {
         phoneNum() {
@@ -417,27 +427,6 @@ export default {
            text-align: center;
            color: #FFFFFF;
            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-       }
-
-       &-btn {
-           width: 490px;
-           height: 86px;
-           background: #7096F5;
-           box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.18);
-           border-radius: 17px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           margin-top: 50px;
-           outline: none;
-
-           & span {
-               font-family: 'Catamaran-Bold', sans-serif;
-               font-size: 24px;
-               line-height: 37px;
-               color: #FFFFFF;
-               text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-           }
        }
    }
 
@@ -615,7 +604,7 @@ export default {
        &-first {
            top: 12px;
            left: 210px;
-           width: 120px;
+           width: 130px;
            text-align: center;
        }
 
@@ -785,15 +774,6 @@ export default {
            &-text {
                font-size: 28px;
                padding: 0 80px;
-           }
-
-           &-btn {
-               width: 390px;
-               height: 56px;
-
-               & span {
-                   font-size: 18px;
-               }
            }
        }
        .list {
@@ -972,17 +952,6 @@ export default {
         &-text {
             padding: 0 40px;
             font-size: 18px;
-        }
-
-        &-btn {
-            width: 250px;
-            height: 56px;
-
-            & span {
-                font-size: 14px;
-                line-height: 1.25;
-                text-align: center;
-            }
         }
     }
 
