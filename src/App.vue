@@ -1,7 +1,11 @@
 <template>
-  <div id="app">
-     <First />
-  </div>
+    <v-app class="root">
+        <v-main>
+            <div id="app">
+                <First />
+            </div>
+        </v-main>
+    </v-app>
 </template>
 
 <script>

@@ -27,3 +27,8 @@
     font-family: 'Mitr-Bold';
     src: url(../assets/fonts/Mitr-Bold.ttf);
 }
+
+@font-face {
+    font-family: 'Asul-Regular';
+    src: url(../assets/fonts/Asul-Regular.ttf);
+}

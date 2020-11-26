@@ -1,51 +1,6 @@
 <template>
     <div>
-        <div class="form-container" v-if="isFormActive">
-            <div class="white-scrim"></div>
-            <div style="position: relative">
-                <form method="post" class="form" @submit.prevent="submitForm">
-                    <h2 class="form-heading">
-                        ЗАПОЛНИТЕ ФОРМУ
-                        <br> ЧТОБЫ ПОЛУЧИТЬ СТОИМОСТЬ РЕМОНТА
-                        <br> НАШИ СОТРУДНИКИ СВЯЖУТЬСЯ С ВАМИ
-                    </h2>
-                    <div class="form-inputs">
-                        <label for="name" class="form-label">
-                            <span class="form-text">Ваше имя:</span>
-                            <span class="form-div">
-                                <input
-                                    class="form-input"
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    v-model="name"
-                                >
-                            </span>
-                            <span v-show="errorName" class="error-message">Заполните поле</span>
-                        </label>
-                        <label for="tel" class="form-label">
-                            <span class="form-text">Номер тел.:</span>
-                            <span class="form-div">
-                                <input
-                                    class="form-input"
-                                    type="tel"
-                                    id="tel"
-                                    name="phone"
-                                    v-model="phoneNum"
-                                >
-                            </span>
-                            <span v-show="errorPhoneNum" class="error-message">Заполните поле</span>
-                        </label>
-                    </div>
-                    <div class="notification" v-show="success">Наши сотрудники вскоре свяжутся с Вами</div>
-                    <div class="form-buttons">
-                        <button class="form-cancel form-btn" @click.prevent="formOff">Отменить</button>
-                        <button class="form-ok form-btn" @click.prevent="submitForm">Ok</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div v-show="!isFormActive">
+        <div>
             <div class="header">
                 <div class="header-info">
                     <h2 class="header-heading">
@@ -72,21 +27,16 @@
                         ФИКСИРОВАННАЯ ЦЕНА И СРОКИ
                     </h1>
 
-                    <GenericBtn
-                        :btn-heading="'BLACK FRIDAY'"
-                        :btn-type="'sales'"
-                    />
+                    <Banner />
 
                     <p class="calculator-text">
                         Более 10 лет специализируемся на комплексном ремонте и строительстве в Киеве и области
                     </p>
 
-                    <GenericBtn
-                        @form-toggler="formToggler"
-                        :btn-type="'calculator'"
-                        :btn-heading="'КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА'"/>
+                    <Form/>
                 </div>
             </div>
+
             <div class="examples">
                 <div class="white-scrim"></div>
                 <div class="examples-photo">
@@ -96,99 +46,121 @@
             <div class="info">
                 <div class="scrim"></div>
                 <div class="info-container">
-                    <h3 class="info-heading">Этапы проектирования и ремонта</h3>
-                    <ul class="info-list list">
-                        <li class="list-item">1. Выезды специалиста на объект или подбор материалов</li>
-                        <li class="list-item">2. Консультация специалиста по выбору стилистического решения</li>
-                        <li class="list-item">3. Обмерочный чертеж с привязкой инженерных коммуникаций</li>
-                        <li class="list-item">4. Планировочные решеия (1-2 варианта)</li>
-                        <li class="list-item">5. План расстановки мебели (2-3 варианта)</li>
-                        <li class="list-item">6. План демонтаж перегородок</li>
-                        <li class="list-item">7. План монтаж перегородок</li>
-                        <li class="list-item">8. План помещения после перепланировки с размерами</li>
-                        <li class="list-item">9. План расстановки мебели с размерами</li>
-                        <li class="list-item">10. План пола с указанием типа используемого материала</li>
-                        <li class="list-item">11. План размещения осветительных приборов и их спецификация</li>
-                        <li class="list-item">12. План размещения выключателей и их спецификация</li>
-                        <li class="list-item">13. План размещения размещения розеток и их спецификация</li>
-                        <li class="list-item">14. План размещения сан-тех приборов и их спецификация</li>
-                        <li class="list-item">15. План размещения приборов отопления и кондиционирования и их спецификация</li>
-                        <li class="list-item">16. План размещения кухонной мебели и оборудования</li>
-                        <li class="list-item">17. Развертка стен по всем помещениям</li>
-                        <li class="list-item">18. Чертежи декоративных элементов и перегородок</li>
-                        <li class="list-item">19. По  необходимости 3D визуализации помещений</li>
-                        <li class="list-item">20. Авторский надзор объекта на протяжении всего ремонта</li>
-                        <li class="list-item">21. Ремонт под ключ</li>
-                        <li class="list-item">22. Подбор мебели и оборудования</li>
-                        <li class="list-item">23. Вывоз строй мусора</li>
-                        <li class="list-item">24. Уборка помещения после ремонта</li>
-                    </ul>
+                    <v-expansion-panels flat v-model="panel" multiple>
+                        <v-expansion-panel :style="{backgroundColor: 'transparent'}">
+                            <v-expansion-panel-header>
+                                <template v-slot:actions>
+                                    <v-icon :style="{opacity: 0}" color="colorWhite">
+                                        $expand
+                                    </v-icon>
+                                </template>
+                                <h3 class="info-heading">
+                                    Этапы проектирования и ремонта
+                                    <v-icon color="colorWhite" :class="{'active-panel': panel.length > 0 }">
+                                        $expand
+                                    </v-icon>
+                                </h3>
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content>
+                                <ul class="info-list list">
+                                    <li class="list-item">1. Выезды специалиста на объект или подбор материалов</li>
+                                    <li class="list-item">2. Консультация специалиста по выбору стилистического решения</li>
+                                    <li class="list-item">3. Обмерочный чертеж с привязкой инженерных коммуникаций</li>
+                                    <li class="list-item">4. Планировочные решеия (1-2 варианта)</li>
+                                    <li class="list-item">5. План расстановки мебели (2-3 варианта)</li>
+                                    <li class="list-item">6. План демонтаж перегородок</li>
+                                    <li class="list-item">7. План монтаж перегородок</li>
+                                    <li class="list-item">8. План помещения после перепланировки с размерами</li>
+                                    <li class="list-item">9. План расстановки мебели с размерами</li>
+                                    <li class="list-item">10. План пола с указанием типа используемого материала</li>
+                                    <li class="list-item">11. План размещения осветительных приборов и их спецификация</li>
+                                    <li class="list-item">12. План размещения выключателей и их спецификация</li>
+                                    <li class="list-item">13. План размещения размещения розеток и их спецификация</li>
+                                    <li class="list-item">14. План размещения сан-тех приборов и их спецификация</li>
+                                    <li class="list-item">15. План размещения приборов отопления и кондиционирования и их спецификация</li>
+                                    <li class="list-item">16. План размещения кухонной мебели и оборудования</li>
+                                    <li class="list-item">17. Развертка стен по всем помещениям</li>
+                                    <li class="list-item">18. Чертежи декоративных элементов и перегородок</li>
+                                    <li class="list-item">19. По  необходимости 3D визуализации помещений</li>
+                                    <li class="list-item">20. Авторский надзор объекта на протяжении всего ремонта</li>
+                                    <li class="list-item">21. Ремонт под ключ</li>
+                                    <li class="list-item">22. Подбор мебели и оборудования</li>
+                                    <li class="list-item">23. Вывоз строй мусора</li>
+                                    <li class="list-item">24. Уборка помещения после ремонта</li>
+                                </ul>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                    </v-expansion-panels>
+
                     <div class="benefits">
-                        <h3 class="benefits-heading">НАШИ ПРЕИМУЩЕСТВА</h3>
-                        <ul class="benefits-list">
-                            <li class="benefits-item">
-                                <Money />
-                                <span class="benefits-text">Всегда придерживаемся<br> согласованного бюджета</span>
-                            </li>
-                            <li class="benefits-item">
-                                <Hand />
-                                <span class="benefits-text">Только высокое качество работы</span>
-                            </li>
-                            <li class="benefits-item">
-                                <Time />
-                                <span class="benefits-text">Скорость. Успеем сделать на вчера</span>
-                            </li>
-                            <li class="benefits-item">
-                                <Car />
-                                <span class="benefits-text">
-                                Закупка и доставка материала а также вывоз<br> строй мусора на протяжении всего ремонта
+                        <div>
+                            <h3 class="benefits-heading">НАШИ ПРЕИМУЩЕСТВА</h3>
+                            <ul class="benefits-list">
+                                <li class="benefits-item">
+                                    <Money />
+                                    <span class="benefits-text">Всегда придерживаемся согласованного бюджета</span>
+                                </li>
+                                <li class="benefits-item">
+                                    <Hand />
+                                    <span class="benefits-text">Только высокое качество работы</span>
+                                </li>
+                                <li class="benefits-item">
+                                    <Time />
+                                    <span class="benefits-text">Скорость. Успеем сделать на вчера</span>
+                                </li>
+                                <li class="benefits-item">
+                                    <Car />
+                                    <span class="benefits-text">
+                                Закупка и доставка материала а также вывоз строй мусора на протяжении всего ремонта
                             </span>
-                            </li>
-                            <li class="benefits-item">
-                                <Wallet />
-                                <span class="benefits-text">Адекватная цена</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="choice">
-                        <div style="position: relative">
-                            <VectorSix />
-                            <p class="choice-center">ЭТАПЫ<br> РАБОТЫ</p>
-                            <p class="choice-first step">
-                                1. Знакомство, выбор
-                                дизайн интерьера,
-                                который
-                                вам нравится
-                            </p>
-                            <p class="choice-second step">
-                                2. Утверждение
-                                технического
-                                задания
-                            </p>
-                            <p class="choice-third step">
-                                3. Разработка
-                                нескольких
-                                эскизных
-                                вариантов
-                                интерьера
-                            </p>
-                            <p class="choice-four step">
-                                4. Создание
-                                дизайн
-                                проекта
-                                интерьера
-                            </p>
-                            <p class="choice-fifth step">
-                                5. Согласование
-                                и внесение<br>
-                                правок
-                            </p>
-                            <p class="choice-sixth step">
-                                6. Авторский
-                                надзор
-                            </p>
+                                </li>
+                                <li class="benefits-item">
+                                    <Wallet />
+                                    <span class="benefits-text">Адекватная цена</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="choice">
+                            <div style="position: relative">
+                                <VectorSix />
+                                <p class="choice-center">ЭТАПЫ<br> РАБОТЫ</p>
+                                <p class="choice-first step">
+                                    1. Знакомство, выбор
+                                    дизайн интерьера,
+                                    который
+                                    вам нравится
+                                </p>
+                                <p class="choice-second step">
+                                    2. Утверждение
+                                    технического
+                                    задания
+                                </p>
+                                <p class="choice-third step">
+                                    3. Разработка
+                                    нескольких
+                                    эскизных
+                                    вариантов
+                                    интерьера
+                                </p>
+                                <p class="choice-four step">
+                                    4. Создание
+                                    дизайн
+                                    проекта
+                                    интерьера
+                                </p>
+                                <p class="choice-fifth step">
+                                    5. Согласование
+                                    и внесение<br>
+                                    правок
+                                </p>
+                                <p class="choice-sixth step">
+                                    6. Авторский
+                                    надзор
+                                </p>
+                            </div>
                         </div>
                     </div>
+
                     <div class="slogan">
                         <span>РАЗРАБОТАЕМ ДИЗАЙН-ПРОЕКТ / РЕМОНТ ПОД КЛЮЧ / СТРОИТЕЛЬСТВО</span>
                     </div>
@@ -219,120 +191,42 @@ import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
 import VectorSix from "@/icons/VectorSix";
 import Examples from "@/components/Examples";
-import GenericBtn from "@/components/GenericBtn";
+import Form from "@/components/Form";
+import Banner from "@/components/Banner";
 export default {
     name: "First",
     components: {
         Car,
+        Banner,
         Hand,
+        Form,
         Money,
         Time,
         Wallet,
         VectorSix,
-        Examples,
-        GenericBtn
+        Examples
     },
     data() {
         return {
             isFormActive: false,
-            phoneNum: '',
-            name: '',
-            errorName: false,
-            errorPhoneNum: false,
-            authToken: '1418261456:AAHSVdgZLME5t_9YQh0KBdmHwJXCilM4lYY',
-            chatID: '-460826271',
-            parseMode: 'HTML',
-            disableNotif: false,
-            success: false,
+            panel: [],
         }
     },
-    methods: {
-        formToggler(){
-            this.isFormActive = true;
-        },
-
-        formOff() {
-            this.isFormActive = false;
-            this.name = '';
-            this.phoneNum = ''
-            this.errorPhoneNum = false;
-            this.errorName = false;
-        },
-
-        submitForm() {
-            if(!this.phoneNum) {
-                this.errorPhoneNum = true;
-            }
-
-            if(!this.name) {
-                this.errorName = true;
-            }
-
-            if(!this.phoneNum || !this.name) {
-                return;
-            }
-
-            let url = `https://api.telegram.org/bot${this.authToken}/sendMessage?chat_id=${this.chatID}&text=${this.msgText}&parse_mode=${this.parseMode}&disable_notification=${this.disableNotif}`
-
-            fetch(url)
-                .then(response => {
-                    return response.json();
-                })
-                .then(response => {
-                    console.log(response)
-                    this.success = true;
-                    this.name = ''
-                    this.phoneNum = ''
-
-                    setTimeout(() => {
-                        this.isFormActive = false;
-                        this.name = '';
-                        this.phoneNum = '';
-                        this.success = false;
-                    }, 2500)
-                })
-                .catch(error => {
-                    console.log();
-                    throw new Error(error);
-                });
-        }
-    },
-    computed: {
-        msgText() {
-            let options = {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                weekday: 'long',
-                timezone: 'UTC',
-                hour: 'numeric',
-                minute: 'numeric',
-            };
-        return '<b>Новая заявка на сайте</b>' + '%0A<b>Имя:</b> ' + this.name + '%0A<b>Номер телефона:</b> ' + `<a :href="${this.phoneNum}">${this.phoneNum}</a>` + '%0A<b>Дата:</b> ' + new Date().toLocaleString("ru", options)
-        },
-    },
-    mounted() {
-
-    },
-    watch: {
-        phoneNum() {
-            console.log(this.phoneNum)
-            this.phoneNum = this.phoneNum.replace(/\D/g, '')
-            if(this.phoneNum) {
-                this.errorPhoneNum = false;
-            }
-        },
-
-        name() {
-            if(this.name) {
-                this.errorName = false;
-            }
-        }
-    }
 }
 </script>
 
 <style scoped lang="scss">
+.active-panel {
+    transform: scaleY(-1);
+}
+.white-scrim {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.7;
+}
+
 .notification {
     font-family: 'Catamaran-Medium', sans-serif;
     text-align: center;
@@ -395,17 +289,14 @@ export default {
 
    .calculator {
        position: relative;
-       height: 785px;
        background: url("../assets/images/minimalism.jpg") no-repeat center;
        background-size: cover;
 
        &-info {
-           position: absolute;
-           height: 100%;
-           width: 100%;
            display: flex;
            flex-direction: column;
            align-items: center;
+           position: relative;
        }
 
        &-heading {
@@ -417,7 +308,7 @@ export default {
            text-align: center;
            line-height: 1.35;
            max-width: 1340px;
-           margin: 55px 45px 90px 45px;
+           margin: 55px 45px 0 45px;
        }
 
        &-text {
@@ -428,14 +319,6 @@ export default {
            color: #FFFFFF;
            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
        }
-   }
-
-   .white-scrim {
-       position: absolute;
-       height: 100%;
-       width: 100%;
-       background-color: #fff;
-       opacity: 0.7;
    }
 
    .examples {
@@ -493,9 +376,12 @@ export default {
    }
 
    .benefits {
+       display: flex;
+       justify-content: space-between;
        margin-top: 35px;
        margin-left: 105px;
        margin-bottom: 72px;
+       padding-right: 40px;
 
        &-heading {
            font-family: 'Mitr-Bold', sans-serif;
@@ -585,10 +471,6 @@ export default {
    }
 
    .choice {
-       position: absolute;
-       top: 720px;
-       right: 80px;
-
        &-center {
            position: absolute;
            top: 205px;
@@ -659,91 +541,6 @@ export default {
       z-index: 5;
   }
 
-  .form {
-      padding-top: 8%;
-
-      &-heading {
-          font-family: 'Catamaran-Regular', sans-serif;
-          font-weight: 700;
-          font-size: 36px;
-          text-align: center;
-          margin-bottom: 5%;
-      }
-
-
-      &-text {
-          font-family: 'Catamaran-Regular', sans-serif;
-          min-width: 100px;
-          font-weight: 700;
-          font-size: 36px;
-          display: flex;
-          align-items: flex-end;
-          line-height: 1;
-      }
-
-      &-inputs {
-          display: flex;
-          justify-content: center;
-      }
-
-      &-input {
-          background-color: transparent!important;
-          border: none;
-          outline: none;
-          height: 100%;
-          width: 100%;
-          font-family: 'Catamaran-Regular', sans-serif;
-          font-weight: 700;
-          font-size: 36px;
-          line-height: 1;
-      }
-
-      &-div {
-          width: 230px;
-          height: 85%;
-          border-bottom: 3px dashed black;
-          margin-left: 10px;
-      }
-
-      &-label {
-          display: flex;
-          position: relative;
-          &:first-child {
-              margin-right: 104px;
-          }
-      }
-
-      &-buttons {
-          display: flex;
-          justify-content: flex-end;
-      }
-
-      &-btn {
-          background: #7096F5;
-          box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.18);
-          border-radius: 17px;
-          outline: none;
-          min-width: 106px;
-          height: 86px;
-          margin-top: 128px;
-          font-family: 'Catamaran-Regular', sans-serif;
-          font-weight: 600;
-          font-size: 36px;
-          padding: 0 10px;
-          text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-          line-height: 1;
-          color: #FFFFFF;
-      }
-
-      &-cancel {
-          margin-right: 40px;
-      }
-
-      &-ok {
-          margin-right: 188px;
-      }
-  }
-
 @media screen and (max-width: 1364px) {
        .header {
            &-info {
@@ -765,8 +562,6 @@ export default {
            }
        }
        .calculator {
-           height: 785px;
-
            &-heading {
                font-size: 32px;
            }
@@ -784,6 +579,7 @@ export default {
        }
        .benefits {
            margin-left: 40px;
+           padding-right: 0;
 
            &-heading {
                font-size: 24px;
@@ -803,66 +599,22 @@ export default {
            }
        }
        .choice {
-           position: relative;
-           top: 0;
-           left: 0;
+           transform: scale(0.75);
            display: flex;
            justify-content: center;
            padding-bottom: 50px;
        }
    }
-
-@media screen and (max-width: 1138px){
-    .form {
-        padding-top: 8%;
-
-        &-heading {
-            font-size: 26px;
-        }
-
-
-        &-text {
-            font-size: 26px;
-        }
-
-        &-input {
-            font-size: 26px;
-        }
-
-        &-label {
-            display: flex;
-            &:first-child {
-                margin-right: 104px;
-            }
-        }
-
-
-        &-btn {
-            font-size: 26px;
-        }
-
-        &-ok {
-            margin-right: 100px;
-        }
+@media screen and (max-width: 1000px) {
+    .benefits {
+        padding: 0 20px;
+        margin-left: 0;
+        flex-direction: column;
+        justify-content: center;
     }
-}
-
-@media screen and (max-width: 982px) {
-    .form {
-        &-inputs {
-            margin: 40px;
-            flex-direction: column;
-        }
-
-        &-div {
-            display: flex;
-            flex-grow: 1;
-        }
-
-        &-label:first-child {
-            margin-right: 0;
-            margin-bottom: 20px;
-        }
+    .choice {
+        transform: scale(1);
+        margin-top: 40px;
     }
 }
 
@@ -942,11 +694,8 @@ export default {
         }
     }
     .calculator {
-        height: 600px;
-
         &-heading {
             font-size: 20px;
-            margin-bottom: 20px;
         }
 
         &-text {
@@ -968,7 +717,6 @@ export default {
         }
     }
     .benefits {
-        margin-left: 20px;
         margin-bottom: 40px;
         &-heading {
             font-size: 18px;
@@ -1023,43 +771,32 @@ export default {
             margin: 20px;
         }
     }
+}
 
-    .form {
-        &-heading {
-            font-size: 18px;
+@media screen and (max-width: 475px) {
+    .benefits {
+        text-align: center;
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 30px;
         }
 
         &-text {
-            font-size: 18px;
+            margin-left: 0;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
         }
-
-        &-input {
-            font-size: 18px;
-        }
-
-        &-btn {
-            min-width: 75px;
-            height: 65px;
-            margin-top: 128px;
-            font-size: 18px;
-        }
-
-        &-cancel {
-            margin-right: 30px;
-        }
-
-        &-ok {
-            margin-right: 30px;
-        }
-
     }
 }
 
 @media screen and (max-width: 349px) {
-    .calculator {
-        height: 750px;
-    }
-
     .choice div {
         transform: scale(0.55);
     }
