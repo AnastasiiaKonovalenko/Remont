@@ -1,7 +1,7 @@
 <template>
     <v-dialog
         v-model="dialog"
-        max-width="1000"
+        max-width="900"
     >
         <template v-slot:activator="{ on, attrs }">
             <div
@@ -23,7 +23,7 @@
 
         <v-card @click="dialog=false">
             <v-img
-                max-width="1000"
+                max-width="900"
                 src="../assets/banners/photo_2020-11-25_22-41-21.jpg"
             ></v-img>
         </v-card>
