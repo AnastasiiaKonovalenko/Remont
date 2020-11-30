@@ -121,7 +121,7 @@ export default {
 }
 
 .close-btn {
-    font-family: 'Catamaran-Regular', sans-serif;
+    font-family: 'Catamaran', sans-serif;
     right: 0;
     bottom: 60px;
     position: absolute;

@@ -285,7 +285,8 @@ export default {
 
        &-link {
            color: white;
-           font-family: 'Catamaran-Bold', sans-serif;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
            font-size: 48px;
            line-height: 18px;
@@ -306,8 +307,8 @@ export default {
        }
 
        &-heading {
-           font-family: 'Catamaran-Bold', sans-serif;
-           font-weight: bold;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            font-size: 56px;
            color: #FFFFFF;
            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -318,7 +319,8 @@ export default {
        }
 
        &-text {
-           font-family: 'Catamaran-Bold', sans-serif;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            font-size: 46px;
            line-height: 55px;
            text-align: center;
@@ -357,7 +359,8 @@ export default {
        }
 
        &-heading {
-           font-family: 'Catamaran-Bold', sans-serif;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            font-size: 24px;
            line-height: 37px;
            color: #FFFFFF;
@@ -371,9 +374,9 @@ export default {
    .list {
        margin-left: 68px;
        &-item {
-           font-family: 'Catamaran-Bold', sans-serif;
+           font-family: 'Catamaran', sans-serif;
            list-style: none;
-           font-weight: bold;
+           font-weight: 700;
            font-size: 24px;
            line-height: 37px;
            color: #FFFFFF;
@@ -431,8 +434,8 @@ export default {
        margin-bottom: 14px;
 
        & span {
-           font-family: 'Catamaran-Bold', sans-serif;
-           font-weight: bold;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            font-size: 24px;
            line-height: 37px;
            color: #FFFFFF;
@@ -455,16 +458,16 @@ export default {
 
            & p {
                margin-left: 10px;
-               font-family: 'Catamaran-Bold', sans-serif;
-               font-weight: bold;
+               font-family: 'Catamaran', sans-serif;
+               font-weight: 700;
                font-size: 28px;
                color: #fff;
                text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
            }
        }
        &-tel, &-email, &-schedule {
-           font-family: 'Catamaran-Bold', sans-serif;
-           font-weight: bold;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            font-size: 28px;
            color: #fff;
            text-decoration: none;
@@ -481,7 +484,7 @@ export default {
            position: absolute;
            top: 205px;
            left: 212px;
-           font-family: 'Catamaran-Regular', sans-serif;
+           font-family: 'Catamaran', sans-serif;
            font-weight: bold;
            font-size: 26px;
            color: #fff;
@@ -531,7 +534,7 @@ export default {
 
    .step {
        position: absolute;
-       font-family: 'Catamaran-Regular', sans-serif;
+       font-family: 'Catamaran', sans-serif;
        font-weight: bold;
        font-size: 17px;
        line-height: 21px;

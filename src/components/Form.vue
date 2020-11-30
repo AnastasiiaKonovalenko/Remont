@@ -15,7 +15,7 @@
                     <GenericBtn
                         :btn-background="'#7096F5'"
                         :text-color="'#fff'"
-                        :text-font-family="'\'Catamaran-Bold\', sans-serif'"
+                        :text-font-family="'\'Catamaran\', sans-serif'"
                         :btn-type="'calculator'"
                         :btn-heading="'КАЛЬКУЛЯТОР СТОИМОСТИ РЕМОНТА'"
                         :ripple-color="'info'"
@@ -244,7 +244,7 @@ export default {
     padding-top: 8%;
 
     &-heading {
-        font-family: 'Catamaran-Regular', sans-serif;
+        font-family: 'Catamaran', sans-serif;
         font-weight: 700;
         font-size: 36px;
         text-align: center;
@@ -253,7 +253,7 @@ export default {
 
 
     &-text {
-        font-family: 'Catamaran-Regular', sans-serif;
+        font-family: 'Catamaran', sans-serif;
         min-width: 100px;
         font-weight: 700;
         font-size: 36px;
@@ -273,7 +273,7 @@ export default {
         outline: none;
         height: 100%;
         width: 100%;
-        font-family: 'Catamaran-Regular', sans-serif;
+        font-family: 'Catamaran', sans-serif;
         font-weight: 700;
         font-size: 36px;
         line-height: 1;
@@ -307,7 +307,7 @@ export default {
         min-width: 106px;
         height: 86px;
         margin-top: 128px;
-        font-family: 'Catamaran-Regular', sans-serif;
+        font-family: 'Catamaran', sans-serif;
         font-weight: 600;
         font-size: 36px;
         padding: 0 10px;

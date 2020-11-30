@@ -43,7 +43,7 @@ export default {
         },
         textFontFamily: {
             type: String,
-            default: '\'Catamaran-Bold\', sans-serif'
+            default: '\'Catamaran\', sans-serif'
         },
         textFontSize: {
             type: String,
