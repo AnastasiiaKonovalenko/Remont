@@ -3,14 +3,14 @@
         <div id="grid" class="grid">
             <div class="scrim" v-if="link"></div>
             <div v-for="i in 12" :key="i" class="grid-item">
-                <img @click="setImgLink(i)" class="grid-img" :src="require(`../assets/images/${i}.jpg`)" alt="">
+                <img @click="setImgLink(i)" class="grid-img" :src="require(`../assets/images/${i}.webp`)" alt="">
             </div>
         </div>
         <transition name="fade">
             <div class="big-img" v-if="link" @click="clearImgLink">
-                <img class="image" :src="require(`../assets/images/${link}.jpg`)" :alt="`image-${link}`">
-                <img @click.stop="slideToLeft" :class="{disabled: +link === 1}" class="left arrow" src="../assets/images/pngwing.com.png" alt="">
-                <img @click.stop="slideToRight" :class="{disabled: +link === 12}" class="right arrow" src="../assets/images/pngwing.com.png" alt="">
+                <img class="image" :src="require(`../assets/images/${link}.webp`)" :alt="`image-${link}`">
+                <img @click.stop="slideToLeft" :class="{disabled: +link === 1}" class="left arrow" src="../assets/images/pngwing.com.webp" alt="">
+                <img @click.stop="slideToRight" :class="{disabled: +link === 12}" class="right arrow" src="../assets/images/pngwing.com.webp" alt="">
             </div>
         </transition>
     </div>
@@ -79,7 +79,7 @@ export default {
         height: 100%;
         opacity: .4;
         z-index: -1;
-        background: url("../assets/images/12.jpg") no-repeat;
+        background: url("../assets/images/12.webp") no-repeat;
         background-size: cover;
     }
 }

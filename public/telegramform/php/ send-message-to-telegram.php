@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $path = $_SERVER['DOCUMENT_ROOT'] . '/telegramform/tmp/';
 
             // Массив допустимых значений типа файла
-            $types = array('image/gif', 'image/png', 'image/jpeg');
+            $types = array('image/gif', 'image/png', 'image/jpeg', 'image/webp');
 
             // Максимальный размер файла
             $size = 1024000;

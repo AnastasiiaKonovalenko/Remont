@@ -235,7 +235,7 @@ export default {
 .form-container {
     height: 100vh;
     width: 100vw;
-    background: url("../assets/images/back-ground1.jpg");
+    background: url("../assets/images/back-ground1.webp");
     background-size: cover;
     z-index: 5;
 }

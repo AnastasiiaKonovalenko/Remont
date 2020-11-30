@@ -1,7 +1,7 @@
 <template>
     <div class="money">
         <Vector />
-        <img src="../assets/images/money.png" alt="icon-money">
+        <img src="../assets/images/money.webp" alt="icon-money">
     </div>
 </template>
 
