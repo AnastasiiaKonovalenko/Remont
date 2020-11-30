@@ -40,7 +40,7 @@
             <div class="examples">
                 <div class="white-scrim"></div>
                 <div class="examples-photo">
-                    <Examples />
+                    <lezy-examples v-if="examples" />
                 </div>
             </div>
             <div class="info">
@@ -190,9 +190,10 @@ import Money from "@/icons/Money";
 import Time from "@/icons/Time";
 import Wallet from "@/icons/Wallet";
 import VectorSix from "@/icons/VectorSix";
-import Examples from "@/components/Examples";
+const lezyExamples = () => import ('../components/Examples.vue');
 import Form from "@/components/Form";
 import Banner from "@/components/Banner";
+
 export default {
     name: "First",
     components: {
@@ -204,14 +205,19 @@ export default {
         Time,
         Wallet,
         VectorSix,
-        Examples
+        lezyExamples
     },
     data() {
         return {
             isFormActive: false,
             panel: [],
+            examples: false
         }
     },
+
+    mounted() {
+        setTimeout(() => this.examples = true, 50)
+    }
 }
 </script>
 
