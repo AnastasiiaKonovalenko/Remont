@@ -216,7 +216,7 @@ export default {
     },
 
     mounted() {
-        setTimeout(() => this.examples = true, 50)
+        setTimeout(() => this.examples = true, 250)
     }
 }
 </script>
