@@ -234,11 +234,13 @@ export default {
 }
 
 .notification {
-    font-family: 'Catamaran-Medium', sans-serif;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 500;
     text-align: center;
 }
    .error-message {
-       font-family: 'Catamaran-Medium', sans-serif;
+       font-family: 'Catamaran', sans-serif;
+       font-weight: 500;
        color: red;
        position: absolute;
        bottom: -20px;
@@ -266,8 +268,8 @@ export default {
            justify-content: center;
            color: #fff;
            text-transform: uppercase;
-           font-family: 'Catamaran-Medium', sans-serif;
-           font-weight: 600;
+           font-family: 'Catamaran', sans-serif;
+           font-weight: 700;
            font-size: 64px;
            width: 100%;
            text-align: center;
@@ -393,8 +395,8 @@ export default {
        padding-right: 40px;
 
        &-heading {
-           font-family: 'Mitr-Bold', sans-serif;
-           font-size: 24px;
+           font-family: 'Mitr', sans-serif;
+           font-weight: 700;
            line-height: 1.75;
            color: #fff;
            margin-left: 102px;
@@ -402,7 +404,8 @@ export default {
        }
 
        &-item {
-           font-family: 'Mitr-Medium', sans-serif;
+           font-family: 'Mitr', sans-serif;
+           font-weight: 500;
            display: flex;
            color: #fff;
            font-size: 24px;
@@ -414,7 +417,8 @@ export default {
        }
 
        &-text {
-           font-family: 'Mitr-Medium', sans-serif;
+           font-family: 'Mitr', sans-serif;
+           font-weight: 500;
            font-size: 26px;
            margin-left: 25px;
            display: flex;
@@ -599,7 +603,8 @@ export default {
            }
 
            &-text {
-               font-family: 'Mitr-Medium', sans-serif;
+               font-family: 'Mitr', sans-serif;
+               font-weight: 500;
                font-size: 26px;
                margin-left: 25px;
                display: flex;

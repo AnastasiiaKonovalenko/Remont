@@ -11,7 +11,7 @@
             >
                 <GenericBtn
                     :btn-heading="'BLACK FRIDAY'"
-                    :text-font-family="'\'Asul-Regular\', sans-serif'"
+                    :text-font-family="'\'Asul\', sans-serif'"
                     :btn-background="'#FF0000'"
                     :text-color="'#000'"
                     :btn-type="'sales'"
