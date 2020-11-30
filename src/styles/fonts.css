@@ -1,34 +1,36 @@
-@font-face {
-    font-family: 'Catamaran-Black';
-    src: url(../assets/fonts/Catamaran-Black.ttf);
-}
 
 @font-face {
     font-family: 'Catamaran-Bold';
     src: url(../assets/fonts/Catamaran-Bold.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Catamaran-Medium';
     src: url(../assets/fonts/Catamaran-Medium.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Catamaran-Regular';
     src: url(../assets/fonts/Catamaran-Regular.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Mitr-Medium';
     src: url(../assets/fonts/Mitr-Medium.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Mitr-Bold';
     src: url(../assets/fonts/Mitr-Bold.ttf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Asul-Regular';
     src: url(../assets/fonts/Asul-Regular.ttf);
+    font-display: swap;
 }
